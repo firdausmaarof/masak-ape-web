@@ -1,0 +1,14 @@
+<div class="container">
+	<div class="ordering-section-head text-center wow bounceInRight" data-wow-delay="0.4s">
+		<h3>Edit Ingredients</h3>
+		<div class="dotted-line">
+			<h4><%= link_to "Add ingredient", new_ingredient_path, class: 'btn btn-primary' %></h4>
+		</div>
+	</div>
+    <div class="row">
+        <div class="col-lg-12">
+			<%= render 'form' %>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>

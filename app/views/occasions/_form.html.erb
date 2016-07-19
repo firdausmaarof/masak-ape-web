@@ -1,0 +1,34 @@
+<% if @occasion.errors.any? %>
+<div id="error_explanation">
+  <h2>
+    <%= pluralize(@occasion.errors.count, "error") %> prohibited
+    this occasion from being saved:
+  </h2>
+  <ul>
+    <% @occasion.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<%= form_for @occasion, :html => {:class => 'form-horizontal'} do |f| %>
+	<div class="form-group">
+    <%= f.label :occasion, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :occasion, class: 'form-control' %>
+    </div>    
+  </div>
+  <div class="form-group">
+    <%= f.label :majlis, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.text_field :majlis, class: 'form-control' %>
+    </div>    
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit class: 'btn btn-primary' %>
+      <%= link_to "Cancel", occasions_path, class: 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>

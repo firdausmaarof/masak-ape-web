@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="ordering-section-head text-center wow bounceInRight" data-wow-delay="0.4s">
+		<h3>Manage Occasions</h3>
+		<div class="dotted-line">
+			<h4><%= link_to "Add occasion", new_occasion_path, class: 'btn btn-primary' %></h4>
+		</div>
+	</div>
+	
+	<table id="occasionTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+		<thead>
+			<tr>
+				<th>Occasion</th>
+				<th>Masakan</th>
+				<th>Option</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @occasions.each do |x| %>
+				<tr>
+					<td><%= x.occasion %></td>
+					<td><%= x.majlis %></td>
+					<td>
+						<%= link_to "Edit", edit_occasion_path(x), class: 'btn btn-primary' %>
+						<%= link_to "Delete", occasion_path(x), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger' %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
