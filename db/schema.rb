@@ -35,26 +35,26 @@ ActiveRecord::Schema.define(version: 20160609115957) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "ingredients_recipes", id: false, force: :cascade do |t|
+    t.integer "recipe_id",     limit: 4
+    t.integer "ingredient_id", limit: 4
+  end
+
+  add_index "ingredients_recipes", ["ingredient_id"], name: "fk_rails_e254ded715", using: :btree
+  add_index "ingredients_recipes", ["recipe_id"], name: "fk_rails_8f63238379", using: :btree
+
   create_table "occasions", force: :cascade do |t|
     t.string "occasion", limit: 255
     t.string "majlis",   limit: 255
   end
 
-  create_table "recipe_ingredient", id: false, force: :cascade do |t|
-    t.integer "recipe_id",     limit: 4
-    t.integer "ingredient_id", limit: 4
-  end
-
-  add_index "recipe_ingredient", ["ingredient_id"], name: "fk_rails_33c8bca5f6", using: :btree
-  add_index "recipe_ingredient", ["recipe_id"], name: "fk_rails_ad1945cc90", using: :btree
-
-  create_table "recipe_occasion", id: false, force: :cascade do |t|
+  create_table "occasions_recipes", id: false, force: :cascade do |t|
     t.integer "recipe_id",   limit: 4
     t.integer "occasion_id", limit: 4
   end
 
-  add_index "recipe_occasion", ["occasion_id"], name: "fk_rails_15c72cc4ae", using: :btree
-  add_index "recipe_occasion", ["recipe_id"], name: "fk_rails_14f728bce3", using: :btree
+  add_index "occasions_recipes", ["occasion_id"], name: "fk_rails_87f15cda82", using: :btree
+  add_index "occasions_recipes", ["recipe_id"], name: "fk_rails_028ffe8094", using: :btree
 
   create_table "recipes", force: :cascade do |t|
     t.string  "recipe",      limit: 255
@@ -88,9 +88,9 @@ ActiveRecord::Schema.define(version: 20160609115957) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "comments", "recipes", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "recipe_ingredient", "ingredients", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "recipe_ingredient", "recipes", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "recipe_occasion", "occasions", on_update: :cascade, on_delete: :cascade
-  add_foreign_key "recipe_occasion", "recipes", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "ingredients_recipes", "ingredients", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "ingredients_recipes", "recipes", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "occasions_recipes", "occasions", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "occasions_recipes", "recipes", on_update: :cascade, on_delete: :cascade
   add_foreign_key "recipes", "cuisines", on_update: :cascade, on_delete: :cascade
 end

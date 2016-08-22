@@ -18,7 +18,7 @@
 		<tbody>
 			<% @recipes.each do |x| %>
 				<tr>
-					<td><%= x.photo %></td>
+					<td><img src="<%= image_path(x.photo)%>" alt="" width="100px"></td>
 					<td>
 						Recipe: <%= x.recipe %> <br>
 						Resipi: <%= x.resipi %> <br>
