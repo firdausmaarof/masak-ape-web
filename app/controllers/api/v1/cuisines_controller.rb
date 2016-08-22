@@ -15,6 +15,10 @@ class Api::V1::CuisinesController < Api::V1::BaseController
     end
   end
 
+  def show
+    respond_with Cuisine.find(params[:id])
+  end
+
   def update
     cuisine = Cuisine.find(params[:id])
 

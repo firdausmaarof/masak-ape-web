@@ -15,6 +15,10 @@ class Api::V1::OccasionsController < Api::V1::BaseController
     end
   end
 
+  def show
+    respond_with Occasion.find(params[:id])
+  end
+
   def update
     occasion = Occasion.find(params[:id])
 
