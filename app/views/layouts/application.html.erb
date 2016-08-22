@@ -69,7 +69,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             <div class="container">
                 <div class="top-menu">
                     <ul>
-                        <li><a href="/" class="scroll" data-no-turbolink>Home</a></li>
+                        <li>
+                            <%= link_to "Home", root_path, 'data-no-turbolink' => true %>
+                        </li>
                         <% if current_user %>
                         |<li>
                             <%= link_to "Ingredient", ingredients_path %>
