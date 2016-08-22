@@ -11,11 +11,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 <%= csrf_meta_tags %>
-<link href="/assets/bootstrap.css" rel='stylesheet' type='text/css' />
+<!-- <link href="/assets/bootstrap.css" rel='stylesheet' type='text/css' /> -->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="/assets/jquery.min.js"></script>
+<!-- <script src="/assets/jquery.min.js"></script> -->
 <!-- Custom Theme files -->
-<link href="/assets/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- <link href="/assets/style.css" rel="stylesheet" type="text/css" media="all" /> -->
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -23,13 +23,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Lobster+Two:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 <!--Animation-->
-<script src="/assets/wow.min.js"></script>
-<link href="/assets/animate.css" rel='stylesheet' type='text/css' />
+<!-- <script src="/assets/wow.min.js"></script>
+<link href="/assets/animate.css" rel='stylesheet' type='text/css' /> -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
 <script>
     new WOW().init();
 </script>
-<script src="/assets/simpleCart.min.js"> </script>  
+<!-- <script src="/assets/simpleCart.min.js"> </script>   -->
 <script type="text/javascript" src="/assets/move-top.js"></script>
 <script type="text/javascript" src="/assets/easing.js"></script>
 <script type="text/javascript">
@@ -47,7 +47,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="container">
             <div class="top-header">
                 <div class="logo">
-                    <a href="index.html"><img src="/assets/logo.png" class="img-responsive" alt="" /></a>
+                    <a href="index.html"><img src="<%= image_path('logo.png') %>" class="img-responsive" alt="" /></a>
                 </div>
                 
                 <div class="header-right">
