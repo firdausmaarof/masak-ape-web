@@ -10,6 +10,7 @@ class Recipe < ActiveRecord::Base
 
 	has_and_belongs_to_many :occasions
 	has_and_belongs_to_many :ingredients
+	belongs_to :cuisine
 
 	def self.search(inputCuisine)
 	  where("cuisine_id LIKE ?", "%#{inputCuisine}%") 

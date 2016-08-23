@@ -16,6 +16,9 @@ Rails.application.routes.draw do
       resources :cuisines, only: [:index, :create, :show, :update, :destroy]
 
       resources :occasions, only: [:index, :create, :show, :update, :destroy]
+
+      post 'recipes/get_best_recipe'
+      resources :recipes
     end
   end 
 
