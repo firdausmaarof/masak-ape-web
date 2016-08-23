@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resources :occasions, only: [:index, :create, :show, :update, :destroy]
 
       post 'recipes/get_best_recipe'
+      get 'recipes/get_recipe_ingredient/:id' => 'recipes#get_recipe_ingredient'
       resources :recipes
     end
   end 

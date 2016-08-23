@@ -22,4 +22,10 @@ class Api::V1::RecipesController < Api::V1::BaseController
       
     render json: recipes.to_json(include: [:cuisine, :occasions])
   end
+
+  def get_recipe_ingredient
+    recipe = Recipe.find(params[:id])
+
+    render json: recipe.to_json(include: [:ingredients])
+  end
 end
