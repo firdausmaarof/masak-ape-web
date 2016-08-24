@@ -10,69 +10,69 @@
 </div>
 <% end %>
 
-<%= form_for @recipe, :html => {:class => 'form-horizontal'} do |f| %>
+<%= form_for @recipe, :html => {} do |f| %>
 	<div class="form-group">
-    <%= f.label :recipe, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.text_field :recipe, class: 'form-control' %>
-    </div>    
+    <%= f.label :recipe, class: 'control-label' %>
+    <%= f.text_field :recipe, class: 'form-control' %>    
   </div>
   <div class="form-group">
-    <%= f.label :resipi, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.text_field :resipi, class: 'form-control' %>
+    <%= f.label :resipi, class: 'control-label' %>
+    <%= f.text_field :resipi, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label "Cuisine", class: 'control-label' %>
+    <%= f.collection_select(:cuisine_id, Cuisine.all, :id, :cuisine, {:prompt => "Choose cuisine"}, {:class => 'form-control'})%>
+  </div>
+  <div class="form-group">
+    <%= f.label :instruction, class: 'control-label' %>
+    <%= f.text_area :instruction, class: 'form-control' %>
+  </div>
+
+<% if false %>
+  <%= f.fields_for @recipe.instructions.build do |p| %>
+    <div class="controls">
+      <div class="form-group">
+        <%= p.label :instruction, class: 'control-label' %>
+        <div class="entry form-group input-group">
+          <%= p.text_field :instruction, class: 'form-control' %>
+          <span class="input-group-btn">
+            <button class="btn btn-success btn-add" type="button">
+              <span class="fa fa-plus"></span>
+            </button>
+          </span>
+        </div>
+      </div>
     </div>
+  <% end %>
+<% end %>
+
+  <div class="form-group">
+    <%= f.label :arahan, class: 'control-label' %>
+    <%= f.text_area :arahan, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label "Cuisine", class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.collection_select(:cuisine_id, Cuisine.all, :id, :cuisine, {:prompt => "Choose cuisine"}, {:class => 'form-control'})%>
-    </div>
+    <%= f.label :time, class: 'control-label' %>
+    <%= f.text_field :time, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :instruction, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.text_area :instruction, class: 'form-control' %>
-    </div>
+    <%= f.label :photo, class: 'control-label' %>
+    <%= f.text_field :photo, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :arahan, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.text_area :arahan, class: 'form-control' %>
-    </div>
+    <%= f.label :rating, class: 'control-label' %>
+    <%= f.text_field :rating, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :time, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.text_field :time, class: 'form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :photo, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.text_field :photo, class: 'form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :rating, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.text_field :rating, class: 'form-control' %>
-    </div>
-  </div>
-  <div class="form-group">
-    <%= f.label "Occasion", class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
+    <%= f.label "Occasion", class: 'control-label' %>
       <%= f.collection_check_boxes :occasion_ids, Occasion.all, :id, :occasion do |b| %>
         <%= b.check_box %>
         <%= b.label %>
         <br>
       <% end %>
-    </div>
   </div>
   
   <div class="form-group">
-    <%= f.label "Ingredient", class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
+    <%= f.label "Ingredient", class: 'control-label' %>
       <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :ingredient do |b| %>
         <%= b.check_box %>
         <%= b.label %>
@@ -80,7 +80,6 @@
       <% if false %>
       <%= select_tag("recipe[ingredient_ids][]", options_for_select(Ingredient.all.collect { |ingredient| [ingredient.ingredient, ingredient.id] }, @recipe.ingredients.collect { |ingredient| ingredient.id}), {:multiple=>true, :size=>5, :class => 'form-control'}) %>
       <% end %>
-    </div>
   </div>
 
   <div class="form-group">
