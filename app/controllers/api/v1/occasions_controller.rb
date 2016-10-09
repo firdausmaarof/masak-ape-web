@@ -2,7 +2,7 @@ class Api::V1::OccasionsController < Api::V1::BaseController
   respond_to :json
 
   def index
-    respond_with Occasion.all
+    respond_with Occasion.all.reorder('occasion')
   end
 
   def create

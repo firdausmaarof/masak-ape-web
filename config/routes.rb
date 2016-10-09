@@ -20,7 +20,8 @@ Rails.application.routes.draw do
       post 'recipes/get_best_recipe'
       post 'recipes/get_fav_recipe'
       post 'recipes/save_rating'
-      get 'recipes/get_recipe_ingredient/:id' => 'recipes#get_recipe_ingredient'
+      post 'recipes/save_review'
+      get 'recipes/get_review/:id' => 'recipes#get_review'
       resources :recipes
     end
   end 

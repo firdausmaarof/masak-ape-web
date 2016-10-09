@@ -8,7 +8,7 @@ class Api::V1::RecipesController < Api::V1::BaseController
   def show
     recipe = Recipe.find(params[:id])
 
-    render json: recipe.to_json(include: :ingredients)
+    render json: recipe.to_json(include: [:ingredients, :comments])
   end
 
   def get_best_recipe
@@ -25,12 +25,6 @@ class Api::V1::RecipesController < Api::V1::BaseController
     render json: recipes.to_json(include: [:ingredients])
   end
 
-  def get_recipe_ingredient
-    recipe = Recipe.find(params[:id])
-
-    render json: recipe.to_json(include: [:ingredients])
-  end
-
   def get_fav_recipe
     recipes = Recipe.where("id IN (?)", params[:dataFavRecipe])
 
@@ -38,12 +32,22 @@ class Api::V1::RecipesController < Api::V1::BaseController
   end
 
   def save_rating
-    recipe = Recipe.find(params[:dataRecipeId])
-    recipe.rating = params[:dataRating]
+    recipe = Recipe.find(params[:recipeId])
+    recipe.rating = params[:rating]
     if recipe.save 
       render json: recipe, status: 201
     else
       render json: { errors: recipe.errors}, status: 422
+    end
+  end
+
+  def save_review
+    review = Review.new(params[:username, :comment, :recipe_id])
+
+    if review.save 
+      render json: review, status: 201
+    else
+      render json: { errors: review.errors}, status: 422
     end
   end
 end

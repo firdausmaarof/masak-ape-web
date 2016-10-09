@@ -2,7 +2,7 @@ class Api::V1::CuisinesController < Api::V1::BaseController
   respond_to :json
 
   def index
-    respond_with Cuisine.all
+    respond_with Cuisine.all.reorder('cuisine')
   end
 
   def create
